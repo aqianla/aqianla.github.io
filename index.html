@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+  <title>LIQIAN</title>
+<style>
+    body {
+  background: black;
+}
+span {
+  color: yellow;
+  font-family: monospace;
+}
+
+.blinker {
+  opacity: 1;
+  margin-bottom: -2px;
+  height: 15px;
+  margin-left: -5px;
+  border-left: 7px solid yellow;
+  animation: blinker 0.9s steps(2, start) infinite;
+}
+
+@keyframes blinker {
+  to { 
+    visibility: hidden; 
+  }
+}
+
+
+</style>
+</head>
+<body
+>
+        <span id="AboutDevTypeText" class="typeing"></span><span class='blinker'>&#32;</span>
+   
+        
+   <script>
+   var data = [
+  {
+    AboutDevTypeText: "<span style='font-size:16px'><br><br>关于我<br/><br/><br/><span> 我的名字叫李前，是一名即将毕业的普通本科大学生。<br/><br/>我没有什么特别的兴趣爱好，只是会在有空的时候，出去走走(川藏线在毕业之前一定要去一次)，看看电影(天堂电影院，第六感是我最喜欢的)，听听音乐<br><br>摄影也是我的爱好之一！当然还有敲敲代码......<br/><br/><span style='color:red'>Talk is Cheap , show me your code!</span> 是我最喜欢的名言<br/><br/>下面是我的简单个人信息:<br><br><span style='color:gray'>----微信:Jeff07z1----<br>----Email:51103942@qq.com----<br>----Blog:www.imqian.top----<br>----图虫:https://tuchong.com/1601460/----<br>----GitHub:https://github.com/isliqian----</span><br><br>非常开心你能看到这里，或许你对我想要更多的了解!</span><br/><br/><br/><span> 只需要点击下面的是或不是告诉我就行啦<br><br/> <span onClick='yes()'> 是 </span> / 不是</span><br/><br/><br/>2018/5/29 18:40 写  "
+  }
+];
+
+var allElements = document.getElementsByClassName("typeing");
+for (var j = 0; j < allElements.length; j++) {
+  var currentElementId = allElements[j].id;
+  var currentElementIdContent = data[0][currentElementId];
+  var element = document.getElementById(currentElementId);
+  var devTypeText = currentElementIdContent;
+
+  // type code
+  var i = 0, isTag, text;
+  (function type() {
+    text = devTypeText.slice(0, ++i);
+    if (text === devTypeText) return;
+    element.innerHTML = text + `<span class='blinker'>&#32;</span>`;
+    var char = text.slice(-1);
+    if (char === "<") isTag = true;
+    if (char === ">") isTag = false;
+    if (isTag) return type();
+    setTimeout(type, 60);
+  })();
+  
+  function yes() {
+     window.location.href="me.html";
+  }
+}
+</script>
+    </body>
+    </html>
